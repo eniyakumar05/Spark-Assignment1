@@ -27,7 +27,7 @@ object Spark_Assignment extends App {
   val Product_Bought = spark.read.option("header",true).csv(Transactions)
   Product_Bought.groupBy("Product_ID","User_ID").count.show()
 
-  import org.apache.spark.sql.functions._
+ 
   //Total spending done by each user on each product
   val Total_Spending = spark.read.option("header",true).csv(Transactions)
   Total_Spending.groupBy("User_ID","Product_ID").agg(sum("Price")).show(false)
